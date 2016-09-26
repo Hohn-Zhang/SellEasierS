@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15G31" minimumToolsVersion="Automatic">
+    <entity name="SEDetailInfo" representedClassName="SEDetailInfo" syncable="YES">
+        <attribute name="infoType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="nameAndValue" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="parentId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="unitId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="SEDetailInfoValue" representedClassName="SEDetailInfoValue" syncable="YES">
+        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="unitId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="valueId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueStr" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="SEDetailTemplate" representedClassName="SEDetailTemplate" syncable="YES">
+        <attribute name="detailType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="templateId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="templateName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="templateValue" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="SERecord" representedClassName="SESellRecord" syncable="YES">
+        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="recordType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="sellerId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+    </entity>
+    <entity name="SEStock" representedClassName="SEStock" syncable="YES">
+        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="remainCount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="SEDetailInfo" positionX="-36" positionY="45" width="128" height="120"/>
+        <element name="SEDetailInfoValue" positionX="-54" positionY="18" width="128" height="150"/>
+        <element name="SEDetailTemplate" positionX="-18" positionY="72" width="128" height="105"/>
+        <element name="SERecord" positionX="-18" positionY="63" width="128" height="120"/>
+        <element name="SEStock" positionX="0" positionY="99" width="128" height="90"/>
+    </elements>
+</model>
