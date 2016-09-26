@@ -16,9 +16,9 @@ class SEBasicStrValueView: UIView, UITextViewDelegate {
     
     var keyBoardHeight: CGFloat = 0.0
     
-    var didBeginEditingCallBack: ((UITextView, CGFloat) -> ())?
+    var didBeginEditingCallBack: ((_ dic:[String:Any]) -> ())?
     
-    var didEndEditingCallBack: ((UITextView) -> ())?
+    var didEndEditingCallBack: ((_ dic:[String:Any]) -> ())?
     
     var valueStr: String {
         get{
@@ -82,7 +82,7 @@ class SEBasicStrValueView: UIView, UITextViewDelegate {
             valueTextView.text = ""
         }
         if didBeginEditingCallBack != nil {
-            didBeginEditingCallBack!(textView,keyBoardHeight)
+            didBeginEditingCallBack!(["textView":textView,"keyBoardHeight":keyBoardHeight])
         }
     }
     
@@ -92,7 +92,7 @@ class SEBasicStrValueView: UIView, UITextViewDelegate {
         }
         keyBoardHeight = 0
         if didEndEditingCallBack != nil {
-            didEndEditingCallBack!(textView)
+            didEndEditingCallBack!(["textView":textView])
         }
     }
     

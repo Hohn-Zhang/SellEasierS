@@ -8,46 +8,48 @@
 
 import UIKit
 
-//class SETimeChooseViewV1: UIView {
-//    var originalDate:NSDate!
-//    let finishChooseBlock: ((chooseDate:NSDate)->())?
-//    @IBOutlet var baseView: UIView!
-//    @IBOutlet var timePiker: UIDatePicker!
-//    
-//    override func awakeFromNib() {
-//        self.frame = SECommon.Macro.screenSize
-//        self.tag = 16080501
-//        baseView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, self.baseView.frame.size.height)
-//        timePiker.datePickerMode = UIDatePickerMode.Date
-//    }
-//    
-//    func show() {
-//        if (originalDate != nil) {
-//            timePiker.date = originalDate;
-//        }
-//        UIView.animateWithDuration(0.3) { 
-//            baseView.frame = CGRectMake(0, self.frame.size.height - baseView.frame.size.height, self.frame.size.width, self.baseView.frame.size.height)
-//        }
-//    }
-//    
-//    func dismiss() {
-//        UIView.animateWithDuration(0.3) { 
-//            baseView.frame = CGRectMake(0, self.frame.size.height, self.frame.size.width, self.baseView.frame.size.height)
-//        }
-//        
-//        if self.isFirstResponder() {
-//            self.resignFirstResponder()
-//        }
-//        self.performSelector(#selector(removeFromSuperview), withObject: nil, afterDelay: 0.3)
-//    }
-//    
-//    @IBAction func doneAction(sender: AnyObject) {
-//        if (finishChooseBlock != nil) {
-//            finishChooseBlock(timePiker.date)
-//        }
-//        dismiss()
-//    }
-//    @IBAction func cancelAction(sender: AnyObject) {
-//        dismiss()
-//    }
-//}
+class SETimeChooseView: UIView {
+    @IBOutlet var baseView: UIView!
+
+    @IBOutlet var datePickerView: UIDatePicker!
+    
+    var finishChooseCallBack:((Date)->())?
+    var originalDate: Date?
+    override func awakeFromNib() {
+        self.frame = SECommon.Macro.screenFrame
+        self.tag = 16080501
+        baseView.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: self.baseView.frame.size.height)
+        datePickerView.datePickerMode = UIDatePickerMode.date
+    }
+    
+    func show() {
+        if originalDate != nil {
+            datePickerView.date = originalDate!;
+        }
+        UIView.animate(withDuration: 0.3) { 
+            self.baseView.frame = CGRect(x: 0, y: self.frame.size.height - self.baseView.frame.size.height, width: self.frame.size.width, height: self.baseView.frame.size.height)
+        }
+    }
+    
+    func dismiss() {
+        UIView.animate(withDuration: 0.3) { 
+            self.baseView.frame = CGRect(x: 0, y: self.frame.size.height, width: self.frame.size.width, height: self.baseView.frame.size.height)
+        }
+
+        if self.isFirstResponder {
+            self.resignFirstResponder()
+        }
+        self.perform(#selector(removeFromSuperview), with: nil, afterDelay: 0.3)
+    }
+    
+    @IBAction func cancelAction(_ sender: AnyObject) {
+        dismiss()
+    }
+    
+    @IBAction func doneAction(_ sender: AnyObject) {
+        if finishChooseCallBack != nil {
+            finishChooseCallBack!(datePickerView.date)
+        }
+        dismiss()
+    }
+}

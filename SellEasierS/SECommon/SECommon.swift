@@ -46,7 +46,8 @@ class SECommon : NSObject{
         static let onePixel = 1.0/UIScreen.main.scale
         
         //屏幕尺寸
-        static let screenSize = UIScreen.main.bounds
+        static let screenFrame = UIScreen.main.bounds
+        static let screenSize = UIScreen.main.bounds.size
         static let screenWidth = UIScreen.main.bounds.size.width
         static let screenHeight = UIScreen.main.bounds.size.height
         

@@ -19,15 +19,15 @@ class SETool {
         let dateComponent = (calendar as NSCalendar).components(unitFlags, from: date)
         var timeStr:String = ""
         if dateComponent.year! > 0 {
-            timeStr += String(describing: dateComponent.year)
+            timeStr += String(describing: dateComponent.year!)
             timeStr += "年"
         }
         if dateComponent.month! > 0 {
-            timeStr += String(describing: dateComponent.month)
+            timeStr += String(describing: dateComponent.month!)
             timeStr += "月"
         }
         if dateComponent.day! > 0 {
-            timeStr += String(describing: dateComponent.day)
+            timeStr += String(describing: dateComponent.day!)
             timeStr += "日"
         }
         return timeStr

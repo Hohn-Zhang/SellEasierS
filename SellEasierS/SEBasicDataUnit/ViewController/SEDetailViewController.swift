@@ -123,7 +123,7 @@ class SEDetailViewController: UIViewController {
 //              TODO????
                 valueModel = SEDetailInfoValueModel(name: "", unitId: detailInfoModel!.unitId, sortOrder:listViewManager.data.count, valueType: 0)
             }
-            segue.destination .setValue(valueModel, forKey: "valueModel")
+            segue.destination.setValue(valueModel, forKey: "valueModel")
         default:
             print("")
         }

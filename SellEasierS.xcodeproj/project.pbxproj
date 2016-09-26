@@ -12,7 +12,6 @@
 		030080EC1D8251F50098C1DC /* SEAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080EB1D8251F50098C1DC /* SEAlertView.swift */; };
 		030080F01D8290850098C1DC /* SEOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080EF1D8290850098C1DC /* SEOverlayView.swift */; };
 		030080F21D829FA60098C1DC /* SETimeChooseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080F11D829FA60098C1DC /* SETimeChooseView.swift */; };
-		030080F41D82A1CE0098C1DC /* SETimeChooseViewV1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 030080F31D82A1CE0098C1DC /* SETimeChooseViewV1.xib */; };
 		030080F61D82AA580098C1DC /* SEBasicDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080F51D82AA580098C1DC /* SEBasicDataViewController.swift */; };
 		030080FA1D82AAA40098C1DC /* SEDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080F91D82AAA40098C1DC /* SEDetailViewController.swift */; };
 		030080FC1D82AAC50098C1DC /* SEInfoValueTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030080FB1D82AAC50098C1DC /* SEInfoValueTypeViewController.swift */; };
@@ -26,6 +25,7 @@
 		032605231D87F779003E8EC3 /* SEDetailTemplateModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032605221D87F779003E8EC3 /* SEDetailTemplateModel.swift */; };
 		032605251D88013B003E8EC3 /* SEDataModelOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032605241D88013B003E8EC3 /* SEDataModelOperation.swift */; };
 		032E1A1A1D92884F0017A5E8 /* SEDetailInfoValueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 032E1A191D92884F0017A5E8 /* SEDetailInfoValueViewController.swift */; };
+		033811CA1D99086D0070AEF2 /* SETimeChooseView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 033811C91D99086D0070AEF2 /* SETimeChooseView.xib */; };
 		03A3B85E1D801A0500C61CC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03A3B85D1D801A0500C61CC6 /* AppDelegate.swift */; };
 		03A3B8661D801A0500C61CC6 /* SellEasierS.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 03A3B8641D801A0500C61CC6 /* SellEasierS.xcdatamodeld */; };
 		03A3B8681D801A0500C61CC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 03A3B8671D801A0500C61CC6 /* Assets.xcassets */; };
@@ -72,7 +72,6 @@
 		030080EB1D8251F50098C1DC /* SEAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEAlertView.swift; sourceTree = "<group>"; };
 		030080EF1D8290850098C1DC /* SEOverlayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEOverlayView.swift; sourceTree = "<group>"; };
 		030080F11D829FA60098C1DC /* SETimeChooseView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SETimeChooseView.swift; sourceTree = "<group>"; };
-		030080F31D82A1CE0098C1DC /* SETimeChooseViewV1.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETimeChooseViewV1.xib; sourceTree = "<group>"; };
 		030080F51D82AA580098C1DC /* SEBasicDataViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEBasicDataViewController.swift; sourceTree = "<group>"; };
 		030080F91D82AAA40098C1DC /* SEDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEDetailViewController.swift; sourceTree = "<group>"; };
 		030080FB1D82AAC50098C1DC /* SEInfoValueTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEInfoValueTypeViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		032605221D87F779003E8EC3 /* SEDetailTemplateModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEDetailTemplateModel.swift; sourceTree = "<group>"; };
 		032605241D88013B003E8EC3 /* SEDataModelOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEDataModelOperation.swift; sourceTree = "<group>"; };
 		032E1A191D92884F0017A5E8 /* SEDetailInfoValueViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SEDetailInfoValueViewController.swift; sourceTree = "<group>"; };
+		033811C91D99086D0070AEF2 /* SETimeChooseView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SETimeChooseView.xib; sourceTree = "<group>"; };
 		03A3B85A1D801A0400C61CC6 /* SellEasierS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SellEasierS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		03A3B85D1D801A0500C61CC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		03A3B8651D801A0500C61CC6 /* SellEasierS.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SellEasierS.xcdatamodel; sourceTree = "<group>"; };
@@ -292,10 +292,10 @@
 		03E173811D80FB1A0063568E /* View */ = {
 			isa = PBXGroup;
 			children = (
+				030080F11D829FA60098C1DC /* SETimeChooseView.swift */,
+				033811C91D99086D0070AEF2 /* SETimeChooseView.xib */,
 				030080EB1D8251F50098C1DC /* SEAlertView.swift */,
 				030080EF1D8290850098C1DC /* SEOverlayView.swift */,
-				030080F11D829FA60098C1DC /* SETimeChooseView.swift */,
-				030080F31D82A1CE0098C1DC /* SETimeChooseViewV1.xib */,
 				03C561A31D90E2D20027EA27 /* SELoadingView.swift */,
 			);
 			path = View;
@@ -422,7 +422,7 @@
 				03E173C81D80FB1A0063568E /* SETimeValueView.xib in Resources */,
 				03E173B91D80FB1A0063568E /* SEProductSideView.xib in Resources */,
 				03E173C41D80FB1A0063568E /* SEDetailTableViewCell.xib in Resources */,
-				030080F41D82A1CE0098C1DC /* SETimeChooseViewV1.xib in Resources */,
+				033811CA1D99086D0070AEF2 /* SETimeChooseView.xib in Resources */,
 				03E173C21D80FB1A0063568E /* SEBasicStrValueView.xib in Resources */,
 				03E173BB1D80FB1A0063568E /* SESellerTableViewCell.xib in Resources */,
 				03E173B31D80FB1A0063568E /* SECompanySideListViewCell.xib in Resources */,
