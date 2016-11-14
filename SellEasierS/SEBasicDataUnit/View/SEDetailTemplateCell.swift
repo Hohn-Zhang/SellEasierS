@@ -9,5 +9,7 @@
 import UIKit
 
 class SEDetailTemplateCell: UITableViewCell {
+    @IBOutlet var nameLabel: UILabel!
 
+    @IBOutlet var valueTypeLabel: UILabel!
 }

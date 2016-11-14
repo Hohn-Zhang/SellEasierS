@@ -1,44 +1,92 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15G31" minimumToolsVersion="Automatic">
-    <entity name="SEDetailInfo" representedClassName="SEDetailInfo" syncable="YES">
-        <attribute name="infoType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="nameAndValue" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="parentId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unitId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Xcode 7.3" sourceLanguage="Objective-C" userDefinedModelVersionIdentifier="">
+    <entity name="SECompany" representedClassName=".SECompany" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SEProduct" inverseName="companys" inverseEntity="SEProduct" syncable="YES"/>
+        <relationship name="sellers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SESeller" inverseName="company" inverseEntity="SESeller" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SECompanyValue" inverseName="company" inverseEntity="SECompanyValue" syncable="YES"/>
     </entity>
-    <entity name="SEDetailInfoValue" representedClassName="SEDetailInfoValue" syncable="YES">
-        <attribute name="sortOrder" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="unitId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="valueId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="valueName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="valueStr" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="valueType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    <entity name="SECompanyTemplate" representedClassName=".SECompanyTemplate" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SECompanyTemplateValue" inverseName="template" inverseEntity="SECompanyTemplateValue" syncable="YES"/>
     </entity>
-    <entity name="SEDetailTemplate" representedClassName="SEDetailTemplate" syncable="YES">
-        <attribute name="detailType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="templateId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="templateName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="templateValue" optional="YES" attributeType="String" syncable="YES"/>
+    <entity name="SECompanyTemplateValue" representedClassName=".SECompanyTemplateValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SECompanyTemplate" inverseName="values" inverseEntity="SECompanyTemplate" syncable="YES"/>
     </entity>
-    <entity name="SERecord" representedClassName="SERecord" syncable="YES">
-        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="recordType" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
-        <attribute name="sellerId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="updateTime" optional="YES" attributeType="Date" syncable="YES"/>
+    <entity name="SECompanyValue" representedClassName=".SECompanyValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SECompany" inverseName="values" inverseEntity="SECompany" syncable="YES"/>
     </entity>
-    <entity name="SEStock" representedClassName="SEStock" syncable="YES">
-        <attribute name="companyId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="productId" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="remainCount" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    <entity name="SEProduct" representedClassName=".SEProduct" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="companys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SECompany" inverseName="products" inverseEntity="SECompany" syncable="YES"/>
+        <relationship name="sellers" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SESeller" inverseName="products" inverseEntity="SESeller" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SEProductValue" inverseName="product" inverseEntity="SEProductValue" syncable="YES"/>
+    </entity>
+    <entity name="SEProductTemplate" representedClassName=".SEProductTemplate" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SEProductTemplateValue" inverseName="template" inverseEntity="SEProductTemplateValue" syncable="YES"/>
+    </entity>
+    <entity name="SEProductTemplateValue" representedClassName=".SEProductTemplateValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SEProductTemplate" inverseName="values" inverseEntity="SEProductTemplate" syncable="YES"/>
+    </entity>
+    <entity name="SEProductValue" representedClassName=".SEProductValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="product" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SEProduct" inverseName="values" inverseEntity="SEProduct" syncable="YES"/>
+    </entity>
+    <entity name="SESeller" representedClassName=".SESeller" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SECompany" inverseName="sellers" inverseEntity="SECompany" syncable="YES"/>
+        <relationship name="products" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SEProduct" inverseName="sellers" inverseEntity="SEProduct" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="SESellerValue" inverseName="seller" inverseEntity="SESellerValue" syncable="YES"/>
+    </entity>
+    <entity name="SESellerTemplate" representedClassName=".SESellerTemplate" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="values" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="SESellerTemplateValue" inverseName="template" inverseEntity="SESellerTemplateValue" syncable="YES"/>
+    </entity>
+    <entity name="SESellerTemplateValue" representedClassName=".SESellerTemplateValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="template" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SESellerTemplate" inverseName="values" inverseEntity="SESellerTemplate" syncable="YES"/>
+    </entity>
+    <entity name="SESellerValue" representedClassName=".SESellerValue" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updateTime" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueType" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="NO" syncable="YES"/>
+        <relationship name="seller" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SESeller" inverseName="values" inverseEntity="SESeller" syncable="YES"/>
     </entity>
     <elements>
-        <element name="SEDetailInfo" positionX="-63" positionY="-18" width="128" height="120"/>
-        <element name="SEDetailInfoValue" positionX="-54" positionY="-9" width="128" height="150"/>
-        <element name="SEDetailTemplate" positionX="-36" positionY="9" width="128" height="105"/>
-        <element name="SERecord" positionX="-18" positionY="27" width="128" height="120"/>
-        <element name="SEStock" positionX="0" positionY="45" width="128" height="90"/>
+        <element name="SECompany" positionX="-81" positionY="9" width="128" height="120"/>
+        <element name="SECompanyTemplate" positionX="-72" positionY="18" width="128" height="90"/>
+        <element name="SECompanyValue" positionX="-63" positionY="27" width="128" height="120"/>
+        <element name="SEProduct" positionX="-99" positionY="225" width="128" height="120"/>
+        <element name="SEProductTemplate" positionX="-90" positionY="0" width="128" height="90"/>
+        <element name="SEProductValue" positionX="-81" positionY="9" width="128" height="120"/>
+        <element name="SESeller" positionX="-117" positionY="-27" width="128" height="120"/>
+        <element name="SESellerTemplate" positionX="-99" positionY="-9" width="128" height="90"/>
+        <element name="SESellerValue" positionX="-108" positionY="-18" width="128" height="120"/>
+        <element name="SESellerTemplateValue" positionX="-81" positionY="-297" width="128" height="105"/>
+        <element name="SEProductTemplateValue" positionX="-72" positionY="-288" width="128" height="105"/>
+        <element name="SECompanyTemplateValue" positionX="-63" positionY="-279" width="128" height="105"/>
     </elements>
 </model>

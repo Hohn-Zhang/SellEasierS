@@ -99,5 +99,6 @@ class SECommon : NSObject{
         static let DataListToDetail          = "SEDataListToDetail"
         static let TemplateListToNewTemplate = "SETemplateListToNewTemplate"
         static let NewTemplateToChooseType   = "SENewTemplateToChooseType"
+        static let GoToTemplateDetailInfoVC  = "SEGoToTemplateDetailInfoVC"
     }
 }

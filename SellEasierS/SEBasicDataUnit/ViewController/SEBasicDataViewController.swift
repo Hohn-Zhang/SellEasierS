@@ -7,30 +7,12 @@
 //
 
 import UIKit
-fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l < r
-  case (nil, _?):
-    return true
-  default:
-    return false
-  }
-}
-
-fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
-  switch (lhs, rhs) {
-  case let (l?, r?):
-    return l > r
-  default:
-    return rhs < lhs
-  }
-}
-
 
 class SEBasicDataViewController: UIViewController {
     
-    var listViewManager : SEBasicDataListViewManager = SEBasicDataListViewManager()
+    let dataManager: SEBasicDataManager = SEBasicDataManager()
+    
+    let tableViewManager: SETableViewManager = SETableViewManager()
     
     @IBOutlet var dataTypeSegment: UISegmentedControl!
     
@@ -50,8 +32,8 @@ class SEBasicDataViewController: UIViewController {
     
     var isAddDetailInfo: Bool = true
     
-    var selectDetailInfoModel: SEDetailInfoModel?
-    
+    var selectDetailInfoModel: SEManagedObject?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         initSubView()
@@ -60,41 +42,89 @@ class SEBasicDataViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        dataManager.detaiInfolType = detaiType()
         loadData()
     }
     
     func loadData() {
-        loadingView!.showWhileExecutingClosure(executingClosure:{
+        loadingView?.showWhileExecutingClosure(executingClosure: { 
             [unowned self] in
-            self.listViewManager.loadDatas()
+            self.dataManager.loadNextPage()
+            if self.dataManager.datas.count > 0 {
+                self.tableViewManager.datas = self.dataManager.datas
             }
-            ,completion:{
-                [unowned self] in
-                self.refreshListView()
-            })
+        }, completion: {
+            [unowned self] in
+            self.refreshListView()
+        })
     }
     
     
     fileprivate func initSubView() {
+        
+        //title
         self.navigationController?.navigationBar.topItem?.title = ctrTitle()
         
-        listViewManager.didSelectRow = {
-            (index:IndexPath)->() in
-            if self.listViewManager.data.count > index.row {
-                self.selectDetailInfoModel = self.listViewManager.data[index.row] as? SEDetailInfoModel
-            }
-        }
+        //table view
+        configDataManagerAndTableViewManager()
         
-        dataListView.delegate = listViewManager
-        dataListView.dataSource = listViewManager
-        listViewManager.detaiInfolType = detaiType()
+        dataListView.tintColor = UIColor.red
+        dataListView.delegate = tableViewManager
+        dataListView.dataSource = tableViewManager
+        dataListView.allowsMultipleSelectionDuringEditing = true
         
+        //loading view
         loadingView = SELoadingView(frame: CGRect(origin: CGPoint(x:self.view.center.x-30,y:self.view.center.y-30), size: CGSize(width: 60, height: 60)), color: UIColor(red: 38.0/255.0, green: 162.0/255.0, blue: 166.0/255.0, alpha: 1.0), size: CGSize(width: 60, height: 60))
         self.view.addSubview(loadingView!)
     }
     
-    func refreshListView() {
-        if listViewManager.data.count > 0{
+    fileprivate func configDataManagerAndTableViewManager() {
+        tableViewManager.didSelectRow = {
+            [unowned self] (index:IndexPath)->() in
+            if !self.dataListView.isEditing {
+                let datas = self.dataManager.datas
+                if datas.count > index.row {
+                    self.selectDetailInfoModel = datas[index.row]
+                    self.isAddDetailInfo = false
+                    self.performSegue(withIdentifier: SECommon.SegueName.DataListToDetail, sender: self)
+                }
+            } else {
+                self.processBtns()
+            }
+        }
+        
+        tableViewManager.didDeselectRow = {
+            [unowned self] (index:IndexPath)->() in
+            if self.dataListView.isEditing && (self.dataListView.indexPathsForSelectedRows == nil || self.dataListView.indexPathsForSelectedRows!.count == 0) {
+                self.processBtns()
+            }
+        }
+        
+        tableViewManager.cellClassName = "SEDetailTableViewCell"
+        
+        tableViewManager.configCellCallBack = {
+            [unowned self] (cell: UITableViewCell,item:Any) -> () in
+            
+            let model = item as? SEManagedObject
+
+            var titleStr: String
+            switch self.detaiType() {
+            case SECommon.DetailType.company,SECommon.DetailType.product:
+                titleStr = "名称:"
+            case SECommon.DetailType.seller:
+                titleStr = "姓名:"
+            }
+
+            if cell.isKind(of: SEDetailTableViewCell.self) && model != nil {
+                let tempCell = cell as! SEDetailTableViewCell
+                tempCell.nameLabel.text = titleStr
+                tempCell.infoLabel.text = model?.name
+            }
+        }
+    }
+    
+    fileprivate func refreshListView() {
+        if tableViewManager.datas.count > 0{
             dataListView.isHidden = false
             noDataLabel.isHidden = true
             dataListView.reloadData()
@@ -110,6 +140,8 @@ class SEBasicDataViewController: UIViewController {
             checkAllBtn.isHidden = false
             if dataListView.indexPathForSelectedRow != nil {
                 deleteBtn.isHidden = false
+            } else {
+                deleteBtn.isHidden = true
             }
         } else {
             editBtn.setTitle("编辑", for: UIControlState())
@@ -145,13 +177,55 @@ class SEBasicDataViewController: UIViewController {
     }
     
     @IBAction func deleteBtnAction(_ sender: AnyObject) {
+        if dataListView.isEditing {
+            if dataListView.indexPathsForSelectedRows != nil {
+                dataListView.beginUpdates()
+
+                var deleteData: [SEManagedObject] = []
+                for indexPath in dataListView.indexPathsForSelectedRows! {
+                    let model = dataManager.datas[indexPath.row]
+                    SEDataBaseManager.sharedInstance.deleteObject(model, complete: nil)
+                    deleteData.append(model)
+                }
+                for model in deleteData {
+                    let index = dataManager.datas.index(of: model)
+                    if index != nil {
+                        dataManager.datas.remove(at: index!)
+                    }
+                }
+                tableViewManager.datas = dataManager.datas
+                dataListView.deleteRows(at: dataListView.indexPathsForSelectedRows!, with: UITableViewRowAnimation.fade)
+                dataListView.endUpdates()
+            }
+        }
     }
     
     @IBAction func checkAllBtnAction(_ sender: AnyObject) {
+        let btn = sender as! UIButton
+        btn.isSelected = !btn.isSelected
+        
+        let btnTitle = btn.isSelected ? "全不选" : "全选"
+        btn.setTitle(btnTitle, for: UIControlState.normal)
+       
+        let datas = dataManager.datas
+        guard datas.count > 0 else {
+            return
+        }
+        
+        for i in 0...dataManager.datas.count - 1 {
+            let indexPath = IndexPath(row: i, section: 0)
+            if btn.isSelected {
+                dataListView.selectRow(at: indexPath, animated: false, scrollPosition: UITableViewScrollPosition.none)
+            } else {
+                dataListView.deselectRow(at: indexPath, animated: false)
+            }
+        }
+        processBtns()
     }
     
     @IBAction func editBtnAction(_ sender: AnyObject) {
         dataListView.isEditing = !dataListView.isEditing
+        dataListView.reloadData()
         processBtns()
     }
     
@@ -168,7 +242,7 @@ class SEBasicDataViewController: UIViewController {
     
     @IBAction func segmentValueChanged(_ sender: AnyObject) {
         self.navigationController?.navigationBar.topItem?.title = ctrTitle()
-        listViewManager.detaiInfolType = detaiType()
+        dataManager.detaiInfolType = detaiType()
         loadData()
     }
     

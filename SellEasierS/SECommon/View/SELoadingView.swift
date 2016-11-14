@@ -12,6 +12,8 @@ class SELoadingView: UIView {
     fileprivate var color: UIColor
     fileprivate var size: CGSize
     
+    fileprivate var executClosure: (()->())?
+    
     fileprivate var replicatorLayer:CAReplicatorLayer?
     
     required public init?(coder aDecoder: NSCoder) {
@@ -37,14 +39,17 @@ class SELoadingView: UIView {
     
     func showWhileExecutingClosure(executingClosure:(()->())?,completion:(()->())?) {
         show()
+        
         if executingClosure != nil {
+            executClosure = executingClosure
             let queue = DispatchQueue.global(qos:.userInteractive)
             queue.async(execute: { 
-                executingClosure!()
+                self.executClosure!()
                 
                 // Update UI
                 DispatchQueue.main.async(execute: {
                     [unowned self] in
+                    self.executClosure = nil
                     completion!()
                     self.dismiss()
                 })

@@ -1,9 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -16,35 +15,21 @@
                 <frame key="frameInset" width="320" height="43.666666666666664"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SECheckRed" translatesAutoresizingMaskIntoConstraints="NO" id="I2q-8x-cFb">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="20" id="d0D-C1-yzL"/>
-                            <constraint firstAttribute="width" constant="20" id="ifp-8d-ZZU"/>
-                        </constraints>
-                    </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tKO-WH-B8P">
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="SIH-9p-Kpv"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="tKO-WH-B8P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="12" id="33H-Nw-JIq"/>
-                    <constraint firstItem="I2q-8x-cFb" firstAttribute="leading" secondItem="tKO-WH-B8P" secondAttribute="trailing" constant="10" id="V2v-HT-4RO"/>
-                    <constraint firstItem="tKO-WH-B8P" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="ZDL-lz-R5w"/>
-                    <constraint firstItem="I2q-8x-cFb" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="crk-lq-xpw"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="I2q-8x-cFb" secondAttribute="trailing" constant="12" id="jP0-XI-iZA"/>
+                    <constraint firstAttribute="bottom" secondItem="tKO-WH-B8P" secondAttribute="bottom" constant="11.67" id="M7w-G8-o1A"/>
+                    <constraint firstItem="tKO-WH-B8P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Uoa-Oy-Iji"/>
+                    <constraint firstAttribute="trailing" secondItem="tKO-WH-B8P" secondAttribute="trailing" constant="8" id="r15-bj-jjM"/>
+                    <constraint firstItem="tKO-WH-B8P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="11" id="xtF-JP-7aV"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="checkImageView" destination="I2q-8x-cFb" id="bjx-pC-OAn"/>
                 <outlet property="typeLabel" destination="tKO-WH-B8P" id="Ef2-jb-iXL"/>
             </connections>
         </tableViewCell>
     </objects>
-    <resources>
-        <image name="SECheckRed" width="20" height="20"/>
-    </resources>
 </document>

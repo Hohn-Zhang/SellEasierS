@@ -21,8 +21,9 @@ class SEInfoValueTypeViewController: UIViewController,UITableViewDelegate,UITabl
         
         self.valueTypeListView.delegate = self
         self.valueTypeListView.dataSource = self
-        
+        self.valueTypeListView.tintColor = UIColor.red
         self.valueTypeListView.selectRow(at: IndexPath(row: selectIndexRow, section: 0), animated: false, scrollPosition: UITableViewScrollPosition.none)
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -48,7 +49,8 @@ class SEInfoValueTypeViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = tableView .cellForRow(at: indexPath) as? SEValueTypeCell
         if cell != nil {
-            cell?.checkImageView.isHidden = false
+//            cell?.checkImageView.isHidden = false
+            cell?.accessoryType = UITableViewCellAccessoryType.checkmark
             selectIndexRow = indexPath.row
             backAction(cell!)
         }
@@ -57,7 +59,8 @@ class SEInfoValueTypeViewController: UIViewController,UITableViewDelegate,UITabl
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         let cell = tableView .cellForRow(at: indexPath) as? SEValueTypeCell
         if cell != nil {
-            cell?.checkImageView.isHidden = true
+            cell?.accessoryType = UITableViewCellAccessoryType.none
+//            cell?.checkImageView.isHidden = true
         }
     }
     
@@ -71,7 +74,13 @@ class SEInfoValueTypeViewController: UIViewController,UITableViewDelegate,UITabl
             }
         }
         cell?.selectionStyle = UITableViewCellSelectionStyle.none
-        cell!.checkImageView.isHidden = selectIndexRow != indexPath.row
+//        cell!.checkImageView.isHidden = selectIndexRow != indexPath.row
+        if selectIndexRow == indexPath.row {
+            cell?.accessoryType = UITableViewCellAccessoryType.checkmark
+        } else {
+            cell?.accessoryType = UITableViewCellAccessoryType.none
+        }
+//        cell?.checkImageView.isHidden = true
         cell?.typeLabel.text = SETool.valueTypeStrWithType(SECommon.ValueType(rawValue: indexPath.row)!)
         return cell!
     }

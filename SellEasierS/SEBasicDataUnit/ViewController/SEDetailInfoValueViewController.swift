@@ -10,75 +10,93 @@ import UIKit
 
 class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
     
-    var unitId: String?
+    var unitId: String? //所属detail id
     
-    var currentValueType: SECommon.ValueType?
+    var currentValueType: SECommon.ValueType? //数值类型
     
-    var hasChanged:Bool = false
+    var hasChanged:Bool = false {
+        didSet {
+            let rightView = SETool.findRightBarItemView(self.navigationController!.navigationBar)
+            guard rightView != nil else {
+                return
+            }
+            if self.hasChanged {
+                rightView!.isHidden = false
+            } else {
+                rightView!.isHidden = true
+            }
+        }
+    } //标记数据是否变化
     
-    //跳转进来时必须赋值
-    var valueModel: SEDetailInfoValueModel?
+    var loadingView: SELoadingView?
+
+    var valueModel: SETempValue? //外部传进来的数据
+
+    @IBOutlet var valueNameLabel: UITextField!  //数值名
     
-    var tempValueModel: SEDetailInfoValueModel?
+    @IBOutlet var valueView: UIView!    //数值展示view
     
-    @IBOutlet var valueNameLabel: UITextField!
-    
-    @IBOutlet var valueView: UIView!
-    
-    @IBOutlet var typeNameLabel: UILabel!
+    @IBOutlet var typeNameLabel: UILabel!  //数值类型名
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tempValueModel = valueModel
+        
+        //设置数值名的输入键盘
         self.valueNameLabel.returnKeyType = UIReturnKeyType.done
         self.valueNameLabel.delegate = self
         
-        self.valueNameLabel.text = valueModel!.valueName
+        self.valueNameLabel.text = valueModel?.name
+        
         self.title = "数据"
+        
+        loadingView = SELoadingView(frame: CGRect(origin: CGPoint(x:self.view.center.x-30,y:self.view.center.y-30), size: CGSize(width: 60, height: 60)), color: UIColor(red: 38.0/255.0, green: 162.0/255.0, blue: 166.0/255.0, alpha: 1.0), size: CGSize(width: 60, height: 60))
+        self.view.addSubview(loadingView!)
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        //转换类型名
+        self.typeNameLabel.text = SETool.valueTypeStrWithType(SECommon.ValueType(rawValue: valueModel!.valueType)!)
         
-        self.typeNameLabel.text = SETool.valueTypeStrWithType(SECommon.ValueType(rawValue: valueModel!.valueType.intValue)!)
         self.initValueView()
     }
-    
+
+    //初始化数值展示及编辑的view
     func initValueView() {
+        //如果本次展示的类型和之前旧有的不是同一种类型需要将之前的移除掉
         let oldValueView = self.view.viewWithTag(16092601)
         if oldValueView != nil {
-            if valueModel?.valueType.intValue != currentValueType?.rawValue {
+            if valueModel?.valueType != currentValueType?.rawValue {
                 oldValueView?.removeFromSuperview()
             }
         }
-        currentValueType = SECommon.ValueType(rawValue: valueModel!.valueType.intValue)
+        //获取当前数值类型
+        currentValueType = SECommon.ValueType(rawValue: valueModel!.valueType)
         let view = self.getValueView()
         view.frame = CGRect(origin:CGPoint(x:0,y:0),size: self.valueView.frame.size)
         self.valueView.addSubview(view)
-//        self.view.addSubview(self.valueView)
     }
     
+    //获取数值展示view
     func getValueView() -> UIView {
-        var tempStr: String
+        var tempStr: String = "SEBasicStrValueView"
 
         var tempView:UIView = UIView()
-        var setMethod: Selector
-        switch valueModel!.valueType.intValue {
-        case SECommon.ValueType.basicStr.rawValue,SECommon.ValueType.number.rawValue:
+        var setMethod: Selector = #selector(setBasicStrView(basicStrView:))
+        let tempType = SECommon.ValueType(rawValue: valueModel!.valueType)
+        switch tempType! {
+        case SECommon.ValueType.basicStr,SECommon.ValueType.number:
             tempStr = "SEBasicStrValueView"
             setMethod = #selector(setBasicStrView(basicStrView:))
-        case SECommon.ValueType.time.rawValue:
+        case SECommon.ValueType.time:
             tempStr = "SETimeValueView"
             setMethod = #selector(setTimeValueView(timeValueView:))
-        case SECommon.ValueType.picture.rawValue:
+        case SECommon.ValueType.picture:
             tempStr = "SEBasicStrValueView"
             setMethod = #selector(setBasicStrView(basicStrView:))
-        case SECommon.ValueType.audio.rawValue:
+        case SECommon.ValueType.audio:
             tempStr = "SEBasicStrValueView"
             setMethod = #selector(setBasicStrView(basicStrView:))
-        case SECommon.ValueType.video.rawValue:
-            tempStr = "SEBasicStrValueView"
-            setMethod = #selector(setBasicStrView(basicStrView:))
-        default:
+        case SECommon.ValueType.video:
             tempStr = "SEBasicStrValueView"
             setMethod = #selector(setBasicStrView(basicStrView:))
         }
@@ -99,7 +117,6 @@ class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
                 let keyBoardHeight = dic["keyBoardHeight"] as! CGFloat
                 let textView = dic["textView"] as! UITextView
                 textView.frame = CGRect(x: textView.frame.origin.x, y: textView.frame.origin.y, width: textView.frame.size.width, height: SECommon.Macro.screenHeight - 64 - keyBoardHeight)
-                
             })
         }
         
@@ -111,17 +128,17 @@ class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
                 textView.frame = CGRect(x: textView.frame.origin.x, y: textView.frame.origin.y, width: textView.frame.size.width, height: tempView.frame.size.height - 30)
                 
                 if textView.text.characters.count > 0 && textView.text != tempView.value(forKey: "placeHolder") as? String {
-                    if self.tempValueModel?.valueStr != textView.text {
+                    if self.valueModel?.value != textView.text {
                         self.hasChanged = true
-                        self.tempValueModel?.valueStr = textView.text
+                        self.valueModel?.value = textView.text
                     }
                     
                 }
             })
         }
         
-        if tempValueModel!.valueStr.characters.count > 0 {
-            tempView.valueStr = tempValueModel!.valueStr
+        if valueModel!.value.characters.count > 0 {
+            tempView.valueStr = valueModel!.value
         } else {
             tempView.valueStr = tempView.placeHolder
         }
@@ -130,8 +147,8 @@ class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
     
     func setTimeValueView(timeValueView:UIView) {
         let tempView = timeValueView as! SETimeValueView
-        if tempValueModel!.valueStr.characters.count > 0 {
-            tempView.date = SETool.dateWithStorageStr(tempValueModel!.valueStr)
+        if valueModel!.value.characters.count > 0 {
+            tempView.date = SETool.dateWithStorageStr(valueModel!.value)
         } else {
             tempView.date = Date()
         }
@@ -139,29 +156,46 @@ class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
             [unowned self] (dic:[String:Any]) in
             let date = dic["date"] as! Date
             let str = SETool.timeStorageStrWithDate(date)
-            if self.tempValueModel?.valueStr != str {
+            if self.valueModel!.value != str {
                 self.hasChanged = true
             }
-            self.tempValueModel?.valueStr = str
+            self.valueModel!.value = str
         }
     }
     
     @IBAction func backAction(_ sender: AnyObject) {
+        back()
+    }
+    
+    func back() {
         self.navigationController!.popViewController(animated: true)
     }
     
     @IBAction func saveAction(_ sender: AnyObject) {
-        valueModel!.save()
+        SETool.resignAllFirstResponder()
+        loadingView?.showWhileExecutingClosure(executingClosure: {
+
+            self.hasChanged = false
+        },
+        completion: {
+            self.back()
+        })
     }
     
     @IBAction func chooseValueTypeAction(_ sender: AnyObject) {
         self.performSegue(withIdentifier: SECommon.SegueName.DetailInfoToChooseType, sender: self)
-        
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField.text != valueModel!.name {
+            hasChanged = true
+            valueModel!.name = textField.text ?? ""
+        }
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         if string == "\n" {
-            valueModel!.valueName = textField.text ?? ""
+            valueModel!.name = textField.text ?? ""
             textField.resignFirstResponder()
         }
         return true
@@ -172,11 +206,11 @@ class SEDetailInfoValueViewController: UIViewController,UITextFieldDelegate {
         case SECommon.SegueName.DetailInfoToChooseType:
             let ctr = segue.destination as! SEInfoValueTypeViewController
 
-            ctr.selectIndexRow = valueModel!.valueType.intValue
+            ctr.selectIndexRow = valueModel!.valueType
             ctr.chooseTypeCallBack = {
                 [unowned self]
                 (valueType: SECommon.ValueType) -> ()  in
-                self.valueModel!.valueType = NSNumber(value: valueType.rawValue)
+                self.valueModel!.valueType = valueType.rawValue
             }
         default:
             break

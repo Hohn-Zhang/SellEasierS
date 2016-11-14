@@ -40,6 +40,19 @@ class SETool {
         return df.string(from: date)
     }
     
+    class func findRightBarItemView(_ navbar:UINavigationBar) -> UIView? {
+        var rightView: UIView?
+        for view in navbar.subviews {
+            if rightView == nil {
+                rightView = view
+            } else if view.frame.origin.x > rightView!.frame.origin.x {
+                // 对subviews的x坐标进行升序排序，最大的一个显然就是右按钮
+                rightView = view
+            }
+        }
+        return rightView
+    }
+    
     class func dateWithStorageStr(_ storageStr:String) -> Date? {
         let df = DateFormatter()
         df.dateFormat = "yyyyMMddHHmmss"
@@ -221,6 +234,25 @@ class SETool {
             tempStr = "视频"
         }
         return tempStr
+    }
+    
+    class func valueTypeWithValueTypeStr(str:String) -> SECommon.ValueType {
+        switch str {
+        case "基础信息":
+            return SECommon.ValueType.basicStr
+        case "数值":
+            return SECommon.ValueType.number
+        case "时间":
+            return SECommon.ValueType.time
+        case "图片":
+            return SECommon.ValueType.picture
+        case "音频":
+            return SECommon.ValueType.audio
+        case "视频":
+            return SECommon.ValueType.video
+        default:
+            return SECommon.ValueType.basicStr
+        }
     }
     
     class func resignAllFirstResponder() {

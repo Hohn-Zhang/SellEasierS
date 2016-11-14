@@ -10,7 +10,7 @@ import UIKit
 
 class SEValueTypeCell: UITableViewCell {
 
-    @IBOutlet var checkImageView: UIImageView!
+//    @IBOutlet var checkImageView: UIImageView!
     
     @IBOutlet var typeLabel: UILabel!
     

@@ -15,7 +15,7 @@
                         <viewControllerLayoutGuide type="bottom" id="w0D-ds-035"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Pnx-B2-dYf">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -36,7 +36,7 @@
                         <viewControllerLayoutGuide type="bottom" id="g3b-rG-kMN"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lSj-fT-Wsl">
-                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据，请前往基本数据页面进行添加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G4G-wA-ZMG">
@@ -193,7 +193,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qfG-ZO-gew"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="G0n-A5-tVM" userLabel="View">
-                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zzC-0K-l1B">
@@ -330,7 +330,7 @@
                         <viewControllerLayoutGuide type="bottom" id="Jhu-Bf-nQt"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ic1-pj-ncS">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="内容:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3qx-U4-w8a">
@@ -469,7 +469,7 @@
                         <viewControllerLayoutGuide type="bottom" id="kvE-rd-hcT"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Zh2-th-Su0">
-                        <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelectionDuringEditing="YES" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="hcT-FG-9La">
@@ -505,7 +505,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I8Q-bS-zw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1709" y="2525"/>
+            <point key="canvasLocation" x="1645" y="2063"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aC7-9H-Dd8">
@@ -561,7 +561,7 @@
                         <viewControllerLayoutGuide type="bottom" id="PaM-gU-R67"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="7TY-R2-CSy">
-                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂无数据，请添加" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="59F-Rj-WXb">
@@ -696,10 +696,10 @@
                         <viewControllerLayoutGuide type="bottom" id="Vu1-bU-dPC"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QBl-uy-R4K">
-                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="选择或新建需要的模版" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBU-58-qoI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="单击选择模版，长按查看模版详情" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eBU-58-qoI">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="jEW-tx-bsF"/>
                                 </constraints>
@@ -740,11 +740,11 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="点击添加模版" image="SEAddGraySmall">
+                                <state key="normal" title="新建模版" image="SEAddGraySmall">
                                     <color key="titleColor" red="0.87450980389999999" green="0.18823529410000001" blue="0.19215686269999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Hym-zc-eMm" kind="show" identifier="SETemplateListToNewTemplate" id="91H-F9-iBf"/>
+                                    <action selector="addNewTemplateAction:" destination="QeN-0D-WR2" eventType="touchUpInside" id="G3l-Sb-2Ix"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -777,24 +777,24 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="addTemplateBtn" destination="vKK-qD-SiT" id="0mp-tI-e7e"/>
                         <outlet property="templateListView" destination="A6S-7K-j8N" id="dCg-sl-aeb"/>
+                        <segue destination="Hym-zc-eMm" kind="show" identifier="SETemplateListToNewTemplate" id="dAI-tG-1Hc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T74-Sn-Lla" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-452" y="2927"/>
         </scene>
-        <!--New Template View Controller-->
+        <!--Template Detail View Controller-->
         <scene sceneID="tTt-5c-j3y">
             <objects>
-                <viewController storyboardIdentifier="SENewTemplateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hym-zc-eMm" customClass="SENewTemplateViewController" customModule="SellEasierS" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SENewTemplateViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Hym-zc-eMm" customClass="SETemplateDetailViewController" customModule="SellEasierS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Fr-3y-4Bc"/>
                         <viewControllerLayoutGuide type="bottom" id="LJa-ha-yzS"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="lfs-TB-UWt">
-                        <rect key="frame" x="0.0" y="64" width="414" height="623"/>
+                        <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="模版名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JWJ-Oa-OKE">
@@ -849,6 +849,9 @@
                                 <state key="normal" title="添加一条" image="SEAddGraySmall">
                                     <color key="titleColor" red="0.14901960780000001" green="0.63529411759999999" blue="0.65098039220000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="addDataAction:" destination="Hym-zc-eMm" eventType="touchUpInside" id="r1N-i3-2JI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -892,12 +895,99 @@
                         <outlet property="addTemplateDetailBtn" destination="XzP-6O-ATH" id="h9U-sC-SAR"/>
                         <outlet property="nameTextField" destination="Aqx-3Z-p8d" id="rHN-pJ-unJ"/>
                         <outlet property="templateDetailList" destination="h8J-3b-R2r" id="ILp-Ag-UfD"/>
-                        <segue destination="V3H-0e-VWj" kind="show" identifier="SENewTemplateToChooseType" id="Ett-Ml-NRM"/>
+                        <segue destination="dhR-L3-URL" kind="show" identifier="SEGoToTemplateDetailInfoVC" id="LOT-58-npd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="m33-Ym-TAT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="745" y="2927"/>
+        </scene>
+        <!--Template Detail Info View Controller-->
+        <scene sceneID="uM0-C6-Hbv">
+            <objects>
+                <viewController id="dhR-L3-URL" customClass="SETemplateDetailInfoViewController" customModule="SellEasierS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="AYl-Mx-Orq"/>
+                        <viewControllerLayoutGuide type="bottom" id="rml-uq-8LV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Tve-cj-vTJ">
+                        <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="名称:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vr3-Jm-u9u">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="8ZW-bG-KMT"/>
+                                    <constraint firstAttribute="width" constant="42" id="HO0-bZ-ZpJ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lsS-D6-E4a">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="dpQ-fD-ZZf"/>
+                                </constraints>
+                                <state key="normal" title="选择类型">
+                                    <color key="titleColor" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="chooseTypeAction:" destination="dhR-L3-URL" eventType="touchUpInside" id="rAb-oO-Jxv"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Wf0-9Y-Efg">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ZtK-DO-a9N"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SENext" translatesAutoresizingMaskIntoConstraints="NO" id="sez-22-nw4">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="11" id="XKv-m7-kzQ"/>
+                                    <constraint firstAttribute="height" constant="20" id="cdE-Dy-Z2T"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lsS-D6-E4a" firstAttribute="leading" secondItem="Tve-cj-vTJ" secondAttribute="leading" constant="20" id="HWD-iZ-UyS"/>
+                            <constraint firstItem="Vr3-Jm-u9u" firstAttribute="leading" secondItem="Tve-cj-vTJ" secondAttribute="leading" constant="20" id="Ps6-So-ARW"/>
+                            <constraint firstItem="lsS-D6-E4a" firstAttribute="top" secondItem="Wf0-9Y-Efg" secondAttribute="bottom" constant="28" id="QqI-9u-f9h"/>
+                            <constraint firstItem="Vr3-Jm-u9u" firstAttribute="top" secondItem="AYl-Mx-Orq" secondAttribute="bottom" constant="30" id="Qru-uS-PTY"/>
+                            <constraint firstAttribute="trailing" secondItem="lsS-D6-E4a" secondAttribute="trailing" constant="20" id="W0l-ti-nfC"/>
+                            <constraint firstItem="Wf0-9Y-Efg" firstAttribute="leading" secondItem="Vr3-Jm-u9u" secondAttribute="trailing" constant="2" id="WV6-f6-vNm"/>
+                            <constraint firstItem="sez-22-nw4" firstAttribute="top" secondItem="Wf0-9Y-Efg" secondAttribute="bottom" constant="33" id="Yhn-hr-iWH"/>
+                            <constraint firstAttribute="trailing" secondItem="sez-22-nw4" secondAttribute="trailing" constant="20" id="f1B-p4-J4h"/>
+                            <constraint firstAttribute="trailing" secondItem="Wf0-9Y-Efg" secondAttribute="trailing" constant="20" id="krp-xR-Efn"/>
+                            <constraint firstItem="Wf0-9Y-Efg" firstAttribute="top" secondItem="AYl-Mx-Orq" secondAttribute="bottom" constant="25" id="qNh-UO-ZCd"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="yLF-Sk-tFf">
+                        <barButtonItem key="leftBarButtonItem" image="SEBackIcon" id="kHD-hq-mLX">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="backAction:" destination="dhR-L3-URL" id="yzs-O4-Cr9"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="保存" id="KUw-zr-DB7">
+                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <action selector="saveAction:" destination="dhR-L3-URL" id="isn-mW-wzX"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="chooseTypeBtn" destination="lsS-D6-E4a" id="tva-L5-aU2"/>
+                        <outlet property="nameTextField" destination="Wf0-9Y-Efg" id="sQa-I7-oCr"/>
+                        <segue destination="V3H-0e-VWj" kind="show" identifier="SENewTemplateToChooseType" id="rpB-GQ-Nzi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="889-OO-NZ4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1644.9275362318842" y="2926.630434782609"/>
         </scene>
     </scenes>
     <resources>
@@ -910,10 +1000,10 @@
         <image name="SEDotNormal" width="17" height="17"/>
         <image name="SEEdit" width="20" height="20"/>
         <image name="SELineChart" width="30" height="30"/>
-        <image name="SEMore" width="40" height="40"/>
+        <image name="SEMore" width="60" height="60"/>
         <image name="SENext" width="11" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="BTR-yu-ySc"/>
+        <segue reference="rpB-GQ-Nzi"/>
     </inferredMetricsTieBreakers>
 </document>

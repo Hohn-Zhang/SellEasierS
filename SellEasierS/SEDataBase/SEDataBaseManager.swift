@@ -12,16 +12,16 @@ import CoreData
 
 class SEDataBaseManager {
     
-    struct EntityName {
-        static let stock = "SEStock"
-        static let detailInfoValue = "SEDetailInfoValue"
-        static let record = "SERecord"
-        static let detailInfo = "SEDetailInfo"
-        static let detailTemplate = "SEDetailTemplate"
-    }
+//    struct EntityName {
+//        static let stock = "SEStock"
+//        static let detailInfoValue = "SEDetailInfoValue"
+//        static let record = "SERecord"
+//        static let detailInfo = "SEDetailInfo"
+//        static let detailTemplate = "SEDetailTemplate"
+//    }
     //单列
     static let sharedInstance = SEDataBaseManager()
-    fileprivate init (){}
+    private init (){}
     
     // MARK: - Core Data stack
     
@@ -92,26 +92,37 @@ class SEDataBaseManager {
         return manageObject;
     }
     
-    func deleteObject(_ obj:NSManagedObject,complete:(Bool)->()) {
+    func deleteObject(_ obj:NSManagedObject,complete:((Bool)->())?) {
         managedObjectContext.delete(obj)
-        complete(obj.isDeleted)
+        if complete != nil {
+            complete!(obj.isDeleted)
+        }
     }
     
-    func fetchObject(entityName:String,predicate:NSPredicate?,sortDescriptions:Array<NSSortDescriptor>?,limitNum:Int) -> [NSManagedObject]? {
+    func fetchObject(entityName:String,predicate:NSPredicate?,sortDescriptions:Array<NSSortDescriptor>?,startIndex: Int?,pageSize:Int?) -> [NSManagedObject]? {
+
         let fetchRequest:NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName:entityName)
-        
         if predicate != nil {
             fetchRequest.predicate = predicate
         }
-        
-        if sortDescriptions != nil {
-            fetchRequest.sortDescriptors = sortDescriptions
+
+        fetchRequest.sortDescriptors = sortDescriptions ?? SEDataBaseManager.defaultSortDescriptors
+
+        if startIndex != nil {
+            fetchRequest.fetchOffset = startIndex!
         }
-        
+
+        if pageSize != nil {
+            fetchRequest.fetchLimit = pageSize!
+        }
+
         if let result = try? managedObjectContext.fetch(fetchRequest) {
             return result as? Array<NSManagedObject>;
         }
         return nil
     }
 
+    static var defaultSortDescriptors: [NSSortDescriptor] {
+        return [NSSortDescriptor(key: "name", ascending: false)]
+    }
 }

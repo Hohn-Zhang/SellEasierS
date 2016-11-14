@@ -9,13 +9,21 @@
 import UIKit
 
 class SETableViewManager : NSObject,UITableViewDelegate,UITableViewDataSource{
-    var data : [NSObject] = []
+    
+    //数据数组
+    var datas : [Any] = []
+    
+    //cell选中处理
     var didSelectRow: ((_ index:IndexPath)->())? = nil
+    
+    //cell取消选中处理
     var didDeselectRow: ((_ index:IndexPath)->())? = nil
     
-    func loadDatas() {}
+    //cell绘制处理
+    var configCellCallBack: ((_ cell: UITableViewCell,_ item: Any?)->())? = nil
     
-    func refreshManager() {}
+    //cell的class name
+    var cellClassName: String = "UITableViewCell"
     
     @objc func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if let selectBlock = self.didSelectRow {
@@ -29,19 +37,35 @@ class SETableViewManager : NSObject,UITableViewDelegate,UITableViewDataSource{
         }
     }
     
+    func itemAtIndex(indexPath: IndexPath) -> Any? {
+        if self.datas.count > 0 && self.datas.count > indexPath.row{
+            return self.datas[indexPath.row]
+        }
+        return nil
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if self.data.count > 0 {
-            return data.count
+        if self.datas.count > 0 {
+            return datas.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellStr = "cell";
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellStr)
-        if let cell = cell {
-            return cell
+        var cell = tableView.dequeueReusableCell(withIdentifier: cellStr)
+        if cell == nil {
+            let nibViews = Bundle.main.loadNibNamed(cellClassName, owner: nil, options: nil)
+            if let view = nibViews?.first as? UITableViewCell {
+                cell = view
+            } else {
+                cell = UITableViewCell()
+            }
         }
-        return UITableViewCell();
+        
+        if configCellCallBack != nil {
+            self.configCellCallBack!(cell!, itemAtIndex(indexPath: indexPath))
+        }
+        return cell!
     }
 }
